@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://admin-ryan:test123@cluster0.u6xa6.mongodb.net/challengers?retryWrites=true&w=majority",
+  "jwtSecret": "thunderstarysecretkey1203#"
+}
