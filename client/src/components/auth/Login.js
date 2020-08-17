@@ -54,10 +54,13 @@ const Login = () => {
           />
         </div>
 
-        <input type="submit" className="btn btn-primary" value="Register" />
+        <input type="submit" className="btn btn-primary" value="Login" />
       </form>
       <p className="my-1">
-        Don't have an account? <Link to="/Register">Sign Up</Link>
+        Don't have an account?
+        <Link className="a" to="/Register">
+          Sign Up
+        </Link>
       </p>
     </Fragment>
   );

@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { logout } from "../../actions/auth";
-export const Navbar = () => {
+import { useSelector, useDispatch } from "react-redux";
+
+export const Navbar = ({ bg }) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const authLinks = (
@@ -12,19 +13,15 @@ export const Navbar = () => {
           onClick={() => {
             dispatch(logout());
           }}
-          href="/"
+          href="#!"
         >
-          <i className="fas fa-sign-out-alt"></i>{" "}
-          <span className="hide-sm">Logout</span>
+          <i className="fas fa-sign-out-alt"></i> Logout
         </a>
       </li>
     </ul>
   );
   const guestLinks = (
     <ul>
-      <li>
-        <Link to="#!">Developers</Link>
-      </li>
       <li>
         <Link to="/register">Register</Link>
       </li>
@@ -33,12 +30,11 @@ export const Navbar = () => {
       </li>
     </ul>
   );
-  console.log(auth);
   return (
-    <nav className="navbar bg-dark">
+    <nav className={`navbar ${bg}`}>
       <h1>
         <Link to="/">
-          <i className="fas fa-code"></i> DevConnector
+          <i className="fas fa-palette"></i> Team Creativity
         </Link>
       </h1>
       {!auth.loading && (
