@@ -14,7 +14,7 @@ const auth = (req, res, next) => {
   try {
     jwt.verify(
       token,
-      process.env.jwtSecret || config.get("jwtSecret"),
+      process.env.JWT || config.get("jwtSecret"),
       (error, decoded) => {
         if (error) {
           return res.status(401).json({ msg: "Token is not valid" });
