@@ -10,7 +10,7 @@ const GroupSchema = new Schema({
   description: {
     type: String,
   },
-  member: [
+  members: [
     {
       user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
     },
