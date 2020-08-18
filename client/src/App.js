@@ -12,7 +12,7 @@ import store from "./store";
 import "./App.css";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
-import Dashboard from "./components/views/Dashboard";
+import Dashboard from "./components/dashboard/Dashboard";
 import CreateGroup from "./components/groups-forms/CreateGroup";
 if (localStorage.token) {
   setAuthToken(localStorage.token);

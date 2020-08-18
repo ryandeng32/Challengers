@@ -52,6 +52,9 @@ const CreateGroup = ({ history }) => {
           />
           <small className="form-text">Description of the group</small>
           <input type="submit" className="btn btn-primary" value="Submit" />
+          <Link className="btn btn-light" to="/dashboard">
+            Go Back
+          </Link>
         </div>
       </form>
     </Fragment>

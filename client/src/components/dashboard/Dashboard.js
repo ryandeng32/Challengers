@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../layout/Spinner";
-
+import DashboardActions from "./DashboardActions";
 import { getCurrentGroups } from "../../actions/group";
 import { GROUPS_ERROR } from "../../actions/types";
 
@@ -22,8 +22,11 @@ const Dashboard = () => {
       <p className="lead">
         <i className="fas fa-user"></i> Welcome {user && user.name}
       </p>
+
       {groups.length !== 0 ? (
-        <Fragment>has</Fragment>
+        <Fragment>
+          <DashboardActions />
+        </Fragment>
       ) : (
         <Fragment>
           <p>You have not yet join any group, please join a group first</p>
