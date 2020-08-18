@@ -13,13 +13,12 @@ const User = require("../../models/User");
 router.get("/me", auth, async (req, res) => {
   try {
     const group = await Group.find({
-      members: { $elemMatch: { id: req.user.id } },
+      members: { $elemMatch: { user: req.user.id } },
     });
 
     if (group.length === 0) {
       return res.status(400).json({ msg: "There are no groups for this user" });
     }
-    console.log(group);
     res.json(group);
   } catch (err) {
     console.error(err.message);
@@ -27,7 +26,7 @@ router.get("/me", auth, async (req, res) => {
   }
 });
 
-// @route       POST api/group/
+// @route       POST api/groups/
 // @desc        Create or update group
 // @access      Private
 router.post(
@@ -37,6 +36,35 @@ router.post(
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
+    }
+    const { name, description } = req.body;
+    // Build group object
+    const groupFields = {};
+    groupFields.members = [{ user: req.user.id }];
+    if (name) groupFields.name = name;
+    if (description) groupFields.description = description;
+
+    try {
+      let group = await Group.findOne({ name });
+      if (group) {
+        // Update
+        // @TODO take care of groupField.members with there are multiple
+        group = await Group.findOneAndUpdate(
+          { name },
+          { $set: groupFields },
+          { new: true }
+        );
+        return res.json(group);
+      }
+
+      // Create new group
+      group = new Group(groupFields);
+      await group.save();
+
+      res.json(group);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
     }
   }
 );
