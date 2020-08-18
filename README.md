@@ -1,5 +1,6 @@
 # Challengers
 > Get engaged, be a challenger
+* A **fullstack** web app made with the **MERN stack** to facilitate **employee engagement in remote environment**
 * A simple, fun, and creative way to create challenges and post submissions.
 * Share photos, videos, and interesting resources with your network - *Challengers* aims to be a highly engaging platform that enhances team building and personal relationships to help companies or teams foster people-driven culture.
 
