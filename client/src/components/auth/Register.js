@@ -48,6 +48,7 @@ const Register = () => {
             name="name"
             value={name}
             onChange={onChange}
+            autoComplete="off"
             required
           />
         </div>
@@ -58,9 +59,14 @@ const Register = () => {
             name="email"
             value={email}
             onChange={onChange}
+            autoComplete="off"
             required
           />
         </div>
+        <small className="form-text">
+          You don't have to use a real email. Since the website is still in
+          testing phase
+        </small>
         <div className="form-group">
           <input
             type="password"
@@ -81,13 +87,11 @@ const Register = () => {
             minLength="6"
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Register" />
+        <input type="submit" className="btn btn-lightblue" value="Register" />
       </form>
-      <p className="my-1">
+      <p className="form-link my-1">
         Already have an account?
-        <Link className="form-link" to="/login">
-          Sign In
-        </Link>
+        <Link to="/login">Sign In</Link>
       </p>
     </Fragment>
   );

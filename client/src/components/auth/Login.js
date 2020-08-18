@@ -28,9 +28,9 @@ const Login = () => {
   }
   return (
     <Fragment>
-      <h1 className="large text-primary">Sign In</h1>
+      <h1 className="large">Sign In</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Sign Into Your Account
+        <i className="far fa-user"></i> Welcome Back
       </p>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
@@ -53,14 +53,11 @@ const Login = () => {
             minLength="6"
           />
         </div>
-
-        <input type="submit" className="btn btn-primary" value="Login" />
+        <input type="submit" className="btn btn-lightblue" value="Login" />
       </form>
-      <p className="my-1">
+      <p className="my-1 form-link">
         Don't have an account?
-        <Link className="form-link" to="/Register">
-          Sign Up
-        </Link>
+        <Link to="/Register">Sign Up</Link>
       </p>
     </Fragment>
   );

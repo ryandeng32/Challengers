@@ -1,11 +1,17 @@
 /********************************************************************/
 /* Global */
 :root {
-  --primary-color: #17a2b8;
+  --primary-color: #364f6b;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --light-blue: #3fc1c9;
+}
+html {
+  height: 100vh;
+  background-color: #e4e9fd;
+  background-image: -webkit-linear-gradient(-65deg, #ffffff 85%, #e7e7e7 30%);
 }
 * {
   box-sizing: border-box;
@@ -101,7 +107,7 @@ img {
   background: rgba(0, 0, 0, 0.452);
 }
 .landing-info {
-  padding: 1rem;
+  padding: 2rem 0;
   opacity: 0.7;
   display: flex;
   flex-direction: column;
@@ -110,73 +116,40 @@ img {
   background: white;
   z-index: 2;
 }
-.landing-inner li {
-  margin-bottom: 8px;
-  border-bottom: 1px solid grey;
-}
 .landing-inner {
   width: 50%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 1.5rem;
 }
-/********************************************************************/
-/* Login Page */
-.register-img {
-  padding: 30px;
-  opacity: 0.7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  border-radius: 20px;
-  height: 450px;
-  width: 400px;
-  color: black;
-  background: grey;
-  z-index: 2;
+.landing-inner li {
+  margin-bottom: 8px;
+  border-bottom: 1px solid grey;
 }
-
-.form-link {
-  color: rgb(35, 37, 146);
-  margin-left: 30px;
-}
-
-.feature-list {
-  padding: 10px;
+.landing-inner ul {
+  padding-top: 5px;
   list-style: initial;
   font-weight: 700;
 }
-
-/* text */
-.title {
-  font-size: 3rem;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
-  color: black;
-  margin: auto;
-  margin-top: 10rem;
-  overflow: hidden;
-  padding: 0 2rem;
-  margin-bottom: 3rem;
-}
-
+/********************************************************************/
 /* Forms */
+
 .form .form-group {
   margin: 1.2rem 0;
 }
-
 .form .form-text {
   display: block;
   margin-top: 0.3rem;
   color: #888;
 }
-
+.form-link {
+  color: grey;
+}
+.form-link a {
+  color: var(--primary-color);
+  margin-left: 10px;
+}
 .form input[type="text"],
 .form input[type="email"],
 .form input[type="password"],
@@ -194,6 +167,12 @@ img {
 button {
   font: inherit;
 }
+
+/********************************************************************/
+/*Utilities                                   
+/********************************************************************/
+
+/* Alerts */
 .alert {
   padding: 0.8rem;
   margin: 1rem 0;
@@ -201,7 +180,6 @@ button {
   background: red;
   color: white;
 }
-
 .alert-danger {
   background: var(--danger-color);
   color: #fff;
@@ -211,13 +189,13 @@ button {
   color: #fff;
 }
 
-/********************************************************************/
 /* Buttons */
 .btn {
   display: block;
   margin-bottom: 10px;
   background: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
+  width: 100%;
   padding: 0.4rem 7rem;
   font-size: 1rem;
   text-align: center;
@@ -233,6 +211,108 @@ button {
 .btn-blue {
   background: rgb(35, 37, 146);
 }
+.btn-lightblue {
+  background: var(--light-blue);
+}
 .btn-rounded {
   border-radius: 5px;
+}
+
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  color: black;
+  margin: auto;
+  margin-top: 10rem;
+  margin-bottom: 3rem;
+  padding: 0 25%;
+}
+
+/* Text Styles*/
+.title {
+  font-size: 3rem;
+}
+
+.x-large {
+  font-size: 4rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.large {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-dark {
+  color: var(--dark-color);
+}
+
+/* Padding */
+.p {
+  padding: 0.5rem;
+}
+.p-1 {
+  padding: 1rem;
+}
+.p-2 {
+  padding: 2rem;
+}
+.p-3 {
+  padding: 3rem;
+}
+.py {
+  padding: 0.5rem 0;
+}
+.py-1 {
+  padding: 1rem 0;
+}
+.py-2 {
+  padding: 2rem 0;
+}
+.py-3 {
+  padding: 3rem 0;
+}
+
+/* Margin */
+.m {
+  margin: 0.5rem;
+}
+.m-1 {
+  margin: 1rem;
+}
+.m-2 {
+  margin: 2rem;
+}
+.m-3 {
+  margin: 3rem;
+}
+.my {
+  margin: 0.5rem 0;
+}
+.my-1 {
+  margin: 1rem 0;
+}
+.my-2 {
+  margin: 2rem 0;
+}
+.my-3 {
+  margin: 3rem 0;
 }

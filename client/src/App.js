@@ -35,7 +35,6 @@ const App = () => {
               component={() => <Navbar navColor="nav-dark" />}
             />
           </Switch>
-
           <Route exact path="/" component={Landing} />
           <section className="container">
             <Alert />
