@@ -6,7 +6,7 @@ import { getGroups } from "../../actions/group";
 
 const Groups = () => {
   const dispatch = useDispatch();
-  const { groups, loading } = useSelector((state) => state.group);
+  const { all_groups, loading } = useSelector((state) => state.group);
 
   useEffect(() => {
     dispatch(getGroups());
@@ -23,8 +23,10 @@ const Groups = () => {
             <i className="fab fa-connectdevelop"></i> Browse and add new groups!
           </p>
           <div className="groups">
-            {groups.length > 0 ? (
-              groups.map((group) => <GroupItem key={group._id} group={group} />)
+            {all_groups.length > 0 ? (
+              all_groups.map((group) => (
+                <GroupItem key={group._id} group={group} />
+              ))
             ) : (
               <h4>No groups found...</h4>
             )}

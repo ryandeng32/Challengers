@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
     case GET_ALL_GROUPS:
       return {
         ...state,
-        groups: payload,
+        all_groups: payload,
         loading: false,
       };
     case GROUPS_ERROR:
@@ -44,6 +44,7 @@ export default (state = initialState, action) => {
     case CLEAR_GROUPS:
       return {
         ...state,
+        group: null,
         groups: [],
         loading: false,
       };

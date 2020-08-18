@@ -1,6 +1,12 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { GET_GROUPS, GET_GROUP, GET_ALL_GROUPS, GROUPS_ERROR } from "./types";
+import {
+  GET_GROUPS,
+  GET_GROUP,
+  GET_ALL_GROUPS,
+  GROUPS_ERROR,
+  CLEAR_GROUPS,
+} from "./types";
 
 // Get current user's added groups
 export const getCurrentGroups = () => async (dispatch) => {
@@ -17,7 +23,7 @@ export const getCurrentGroups = () => async (dispatch) => {
 
 // Get all groups
 export const getGroups = () => async (dispatch) => {
-  // dispatch({ type: CLEAR_GROUPS }); prevent flashing of old groups ?
+  dispatch({ type: CLEAR_GROUPS });
   try {
     const res = await axios.get("/api/groups");
     dispatch({ type: GET_ALL_GROUPS, payload: res.data });
@@ -30,7 +36,7 @@ export const getGroups = () => async (dispatch) => {
 };
 
 // Get group by ID
-export const getGroup = (groupId) => async (dispatch) => {
+export const getGroupById = (groupId) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/groups/${groupId}`);
     dispatch({ type: GET_GROUP, payload: res.data });
