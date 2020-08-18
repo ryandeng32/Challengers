@@ -13,7 +13,7 @@ import "./App.css";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 import Dashboard from "./components/views/Dashboard";
-
+import CreateGroup from "./components/groups-forms/CreateGroup";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
@@ -33,6 +33,11 @@ const App = () => {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/create-group"
+                component={CreateGroup}
+              />
             </Switch>
           </section>
         </Fragment>

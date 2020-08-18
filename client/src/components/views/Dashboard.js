@@ -27,8 +27,8 @@ const Dashboard = () => {
       ) : (
         <Fragment>
           <p>You have not yet join any group, please join a group first</p>
-          <Link to="/add-group" className="btn btn-primary my-1">
-            Add Group
+          <Link to="/create-group" className="btn btn-primary my-1">
+            Create Group
           </Link>
         </Fragment>
       )}
