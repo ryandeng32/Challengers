@@ -15,7 +15,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: white;
 }
 
 ul {
@@ -25,9 +24,10 @@ ul {
 li {
   margin-left: 20px;
 }
+
 a {
-  color: white;
   text-decoration: none;
+  color: white;
 }
 
 p {
@@ -39,6 +39,7 @@ img {
 }
 /* Navbar */
 .navbar {
+  opacity: 0.7;
   left: 0;
   top: 0;
   z-index: 2;
@@ -47,7 +48,6 @@ img {
   position: fixed;
   display: flex;
   align-items: center;
-  opacity: 0.5;
 }
 
 .navbar h1 {
@@ -64,8 +64,11 @@ img {
   right: 10%;
 }
 
-.bg-black {
-  background: black;
+.nav-dark {
+  border-bottom: 1px solid black;
+}
+.nav-dark a {
+  color: black;
 }
 
 @media screen and (max-width: 900px) {

@@ -27,7 +27,15 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          <Navbar bg="bg-black" />
+          <Switch>
+            <Route exact path="/" component={() => <Navbar />} />
+            <Route
+              exact
+              path="*"
+              component={() => <Navbar navColor="nav-dark" />}
+            />
+          </Switch>
+
           <Route exact path="/" component={Landing} />
           <section className="container">
             <Alert />

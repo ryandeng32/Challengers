@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { logout } from "../../actions/auth";
 import { useSelector, useDispatch } from "react-redux";
 
-export const Navbar = ({ bg }) => {
+export const Navbar = ({ navColor }) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const authLinks = (
@@ -45,7 +45,7 @@ export const Navbar = ({ bg }) => {
     return null;
   }
   return (
-    <nav className={`navbar ${bg}`}>
+    <nav className={`navbar ${navColor}`}>
       <h1>
         <Link to="/">
           <i className="fas fa-palette"></i> Team Creativity
