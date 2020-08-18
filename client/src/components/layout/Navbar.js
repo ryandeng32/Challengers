@@ -2,12 +2,16 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../actions/auth";
 import { useSelector, useDispatch } from "react-redux";
+import Spinner from "../layout/Spinner";
 
 export const Navbar = ({ bg }) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const authLinks = (
     <ul>
+      <li>
+        <Link to="/groups">Groups</Link>
+      </li>
       <li>
         <Link to="/dashboard">
           <i className="fas fa-user" /> Dashboard
@@ -28,6 +32,9 @@ export const Navbar = ({ bg }) => {
   const guestLinks = (
     <ul>
       <li>
+        <Link to="/groups">Groups</Link>
+      </li>
+      <li>
         <Link to="/register">Register</Link>
       </li>
       <li>
@@ -35,6 +42,9 @@ export const Navbar = ({ bg }) => {
       </li>
     </ul>
   );
+  if (auth.loading) {
+    return null;
+  }
   return (
     <nav className={`navbar ${bg}`}>
       <h1>

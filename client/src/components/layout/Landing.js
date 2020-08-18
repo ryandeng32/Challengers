@@ -1,8 +1,13 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Spinner from "../layout/Spinner";
+
 const Landing = () => {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const { loading, isAuthenticated } = useSelector((state) => state.auth);
+  if (loading) {
+    return <Spinner />;
+  }
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
