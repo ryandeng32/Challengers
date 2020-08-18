@@ -1,10 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Spinner from "../layout/Spinner";
 
 const Landing = () => {
   const { loading, isAuthenticated } = useSelector((state) => state.auth);
+
   if (loading) {
     return <Spinner />;
   }
@@ -14,10 +15,10 @@ const Landing = () => {
 
   return (
     <section className="landing">
-      <div className="landing-img">
+      <div className="landing-info">
         <div className="landing-inner">
           <h1 className="title">Demo Page</h1>
-          <p className="follow">
+          <p className="lead">
             Welcome to our team's demo page. This page now has the following
             features
           </p>
@@ -27,8 +28,8 @@ const Landing = () => {
           </ul>
         </div>
 
-        <div className="buttons">
-          <Link to="/register" className="btn  btn-rounded">
+        <div>
+          <Link to="/register" className="btn btn-rounded">
             Sign Up
           </Link>
           <Link to="/login" className="btn btn-blue btn-rounded">

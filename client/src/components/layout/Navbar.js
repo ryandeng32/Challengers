@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 export const Navbar = ({ navColor }) => {
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
+  const { loading, isAuthenticated } = useSelector((state) => state.auth);
 
   // If user is authenticated (logged in)
   const authLinks = (
@@ -47,7 +47,7 @@ export const Navbar = ({ navColor }) => {
   );
 
   // render null when fetching authentication info from server
-  if (auth.loading) {
+  if (loading) {
     return null;
   }
   return (
@@ -57,8 +57,8 @@ export const Navbar = ({ navColor }) => {
           <i className="fas fa-palette"></i> Team Creativity
         </Link>
       </h1>
-      {!auth.loading && (
-        <Fragment>{auth.isAuthenticated ? authLinks : guestLinks}</Fragment>
+      {!loading && (
+        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
       )}
     </nav>
   );
