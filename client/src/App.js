@@ -12,7 +12,7 @@ import store from "./store";
 import "./App.css";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
-import uploadChallenge from "./components/views/UploadChallenge";
+import Dashboard from "./components/views/Dashboard";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -32,11 +32,7 @@ const App = () => {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <PrivateRoute
-                exact
-                path="/dashboard"
-                component={uploadChallenge}
-              />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
           </section>
         </Fragment>
