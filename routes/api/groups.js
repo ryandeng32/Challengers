@@ -7,6 +7,7 @@ const { check, validationResult } = require("express-validator");
 // Mongoose Model
 const Group = require("../../models/Group");
 const User = require("../../models/User");
+const { profile_url } = require("gravatar");
 
 // @route       GET api/groups/me
 // @desc        Get current user's joined groups
@@ -99,4 +100,26 @@ router.get("/:group_id", checkObjectId("group_id"), async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+// @route       PUT api/groups/:group_id/users
+// @desc        add user to group with the given group id
+// @access      Private
+router.put(
+  "/:group_id/users",
+  [auth, checkObjectId("group_id")],
+  async (req, res) => {
+    // @TODO: Don't add if user is already in the group
+    try {
+      const group = await Group.findOne({ _id: req.params.group_id });
+      group.members.push({ user: req.user.id });
+      await group.save();
+
+      res.json(group);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
+
 module.exports = router;
