@@ -10,8 +10,28 @@ const Groups = () => {
 
   useEffect(() => {
     dispatch(getGroups());
-  }, []);
+  }, [dispatch]);
 
-  return <div>hi</div>;
+  return (
+    <Fragment>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <Fragment>
+          <h1 className="large text-primary">Groups</h1>
+          <p className="lead">
+            <i className="fab fa-connectdevelop"></i> Browse and add new groups!
+          </p>
+          <div className="groups">
+            {groups.length > 0 ? (
+              groups.map((group) => <GroupItem key={group._id} group={group} />)
+            ) : (
+              <h4>No groups found...</h4>
+            )}
+          </div>
+        </Fragment>
+      )}
+    </Fragment>
+  );
 };
 export default Groups;

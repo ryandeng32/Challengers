@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../layout/Spinner";
 import DashboardActions from "./DashboardActions";
 import { getCurrentGroups } from "../../actions/group";
-import { GROUPS_ERROR } from "../../actions/types";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -12,7 +11,7 @@ const Dashboard = () => {
   const { groups, loading } = useSelector((state) => state.group);
   useEffect(() => {
     dispatch(getCurrentGroups());
-  }, []);
+  }, [dispatch]);
 
   return loading && groups.length === 0 ? (
     <Spinner />

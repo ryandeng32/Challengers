@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../actions/auth";
 import { useSelector, useDispatch } from "react-redux";
-import Spinner from "../layout/Spinner";
 
 export const Navbar = ({ bg }) => {
   const dispatch = useDispatch();
