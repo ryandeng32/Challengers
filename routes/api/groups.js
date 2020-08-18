@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
+const checkObjectId = require("../../middleware/checkObjectId");
 const { check, validationResult } = require("express-validator");
 
 // Mongoose Model
@@ -17,7 +18,7 @@ router.get("/me", auth, async (req, res) => {
     });
 
     if (group.length === 0) {
-      return res.status(400).json({ msg: "There are no groups for this user" });
+      return res.status(400).json({ msg: "There is no group for this user" });
     }
     res.json(group);
   } catch (err) {
@@ -40,7 +41,6 @@ router.post(
     const { name, description } = req.body;
     // Build group object
     const groupFields = {};
-    groupFields.members = [{ user: req.user.id }];
     if (name) groupFields.name = name;
     if (description) groupFields.description = description;
 
@@ -48,7 +48,6 @@ router.post(
       let group = await Group.findOne({ name });
       if (group) {
         // Update
-        // @TODO take care of groupField.members with there are multiple
         group = await Group.findOneAndUpdate(
           { name },
           { $set: groupFields },
@@ -58,6 +57,7 @@ router.post(
       }
 
       // Create new group
+      groupFields.members = [{ user: req.user.id }];
       group = new Group(groupFields);
       await group.save();
 
@@ -68,4 +68,35 @@ router.post(
     }
   }
 );
+
+// @route       GET api/groups/
+// @desc        get all groups
+// @access      Public
+router.get("/", async (req, res) => {
+  try {
+    const groups = await Group.find();
+    res.json(groups);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route       GET api/groups/:group_id
+// @desc        get group by group ID
+// @access      Public
+router.get("/:group_id", checkObjectId("group_id"), async (req, res) => {
+  try {
+    const group = await Group.findOne({ _id: req.params.group_id });
+    if (!group) {
+      return res
+        .status(400)
+        .json({ msg: "There is no group with the given id" });
+    }
+    res.json(group);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 module.exports = router;
