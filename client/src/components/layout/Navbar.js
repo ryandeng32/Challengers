@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 export const Navbar = ({ navColor }) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
+
+  // If user is authenticated (logged in)
   const authLinks = (
     <ul>
       <li>
@@ -21,13 +23,15 @@ export const Navbar = ({ navColor }) => {
           onClick={() => {
             dispatch(logout());
           }}
-          href="#!"
+          href="#"
         >
           <i className="fas fa-sign-out-alt"></i> Logout
         </a>
       </li>
     </ul>
   );
+
+  // user is not logged in
   const guestLinks = (
     <ul>
       <li>
@@ -41,6 +45,8 @@ export const Navbar = ({ navColor }) => {
       </li>
     </ul>
   );
+
+  // render null when fetching authentication info from server
   if (auth.loading) {
     return null;
   }

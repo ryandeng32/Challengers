@@ -1,3 +1,5 @@
+/********************************************************************/
+/* Global */
 :root {
   --primary-color: #17a2b8;
   --dark-color: #343a40;
@@ -5,41 +7,36 @@
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-
 ul {
   list-style: none;
 }
-
 li {
   margin-left: 20px;
 }
-
 a {
   text-decoration: none;
   color: white;
 }
-
 p {
   margin: 0.5rem 0;
 }
-
 img {
   width: 100%;
 }
+
+/********************************************************************/
 /* Navbar */
 .navbar {
-  opacity: 0.7;
+  opacity: 0.75;
   left: 0;
   top: 0;
   z-index: 2;
@@ -49,28 +46,27 @@ img {
   display: flex;
   align-items: center;
 }
-
 .navbar h1 {
   position: relative;
   left: 50%;
   font-size: 2rem;
   transform: translate(-50%, 0);
 }
-
 .navbar ul {
   margin-left: auto;
   display: flex;
   position: relative;
   right: 10%;
 }
-
 .nav-dark {
+  opacity: 0.95;
+  background-color: white;
   border-bottom: 1px solid black;
 }
 .nav-dark a {
   color: black;
 }
-
+/* @TODO: Make compatible for smaller screens */
 @media screen and (max-width: 900px) {
   .navbar h1 {
     left: 10%;
@@ -78,6 +74,8 @@ img {
   }
 }
 
+/********************************************************************/
+/* Landing Page */
 .landing {
   display: flex;
   position: absolute;
@@ -143,7 +141,7 @@ img {
   z-index: 2;
 }
 
-.a {
+.form-link {
   color: rgb(35, 37, 146);
   margin-left: 30px;
 }
