@@ -168,4 +168,7 @@ router.delete(
     }
   }
 );
+
+router.use("/:group_id/challenges", require("./challenges"));
+
 module.exports = router;
