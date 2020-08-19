@@ -9,7 +9,7 @@ const Group = require("../../models/Group");
 const User = require("../../models/User");
 
 // @route       POST api/group/:group_id/challenges
-// @desc        Create a challenge
+// @desc        Create a challenge to group with group_id
 // @access      Private
 router.post(
   "/",
@@ -36,6 +36,41 @@ router.post(
       });
 
       const challenge = await newChallenge.save();
+      res.json(challenge);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
+
+// @route       GET api/group/:group_id/challenges
+// @desc        Get all challenges in a specific group with group_id
+// @access      Private
+router.get("/", auth, async (req, res) => {
+  try {
+    const challenges = await Challenge.find({
+      group: req.params.group_id,
+    }).sort({ date: -1 });
+    res.json(challenges);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route       GET api/group/:group_id/challenges/:challenge_id
+// @desc        Get challenge by challenge_id
+// @access      Private
+router.get(
+  "/:challenge_id",
+  [auth, checkObjectId("challenge_id")],
+  async (req, res) => {
+    try {
+      const challenge = await Challenge.findById(req.params.challenge_id);
+      if (!challenge) {
+        return res.status(404).json({ msg: "Challenge not found" });
+      }
       res.json(challenge);
     } catch (err) {
       console.error(err.message);
