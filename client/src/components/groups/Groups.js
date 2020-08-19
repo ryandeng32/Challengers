@@ -22,6 +22,7 @@ const Groups = () => {
           <p className="lead">
             <i className="fas fa-eye"></i> Browse and add new groups!
           </p>
+          <hr />
           <div className="groups">
             {all_groups.length > 0 ? (
               all_groups.map((group) => (

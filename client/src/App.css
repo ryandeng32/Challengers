@@ -42,7 +42,7 @@ img {
   left: 0;
   top: 0;
   z-index: 2;
-  height: 15vh;
+  height: 12vh;
   width: 100%;
   position: fixed;
   display: flex;
@@ -167,22 +167,31 @@ button {
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 1rem;
 }
 
 .group {
   border: 2px solid #e7e7e7;
   text-align: center;
-  border-radius: 4px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
   position: relative;
   padding: 3rem 0.5rem;
 }
 .group .btn {
   position: relative;
   background-color: var(--light-blue);
-  opacity: 0.7;
   top: 50px;
 }
 
+.saved {
+  position: relative;
+  bottom: 15px;
+  color: #62c278;
+  font-size: 1.5rem;
+}
 /* @TODO: Make compatible for smaller screens */
 @media screen and (max-width: 900px) {
   .groups {
@@ -191,10 +200,25 @@ button {
     grid-gap: 1rem;
   }
 }
+
+/********************************************************************/
+/*Dashboard */
+.dash-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+}
+
 /********************************************************************/
 /*Utilitie */
 /********************************************************************/
-
+hr {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8c8c inset;
+  margin-bottom: 2rem;
+}
 /* Alerts */
 .alert {
   padding: 0.8rem;
@@ -219,17 +243,18 @@ button {
   background: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
   width: 100%;
-  padding: 0.4rem 7rem;
+  padding: 0.4rem 5rem;
   font-size: 1rem;
   text-align: center;
   border: none;
   cursor: pointer;
   margin-right: 0.5rem;
   outline: none;
+  transition: opacity 0.15s ease-in;
   border-radius: 2px;
 }
 .btn:hover {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 .btn-blue {
   background: rgb(35, 37, 146);
@@ -237,10 +262,23 @@ button {
 .btn-lightblue {
   background: var(--light-blue);
 }
+.btn-light {
+  background: #e9e9e9;
+  color: grey;
+}
 .btn-rounded {
   border-radius: 5px;
 }
-
+.btn-danger {
+  background: var(--danger-color);
+}
+input {
+  transition: 0.2s ease-in;
+}
+input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #719ece;
+}
 /* Container */
 .container {
   display: flex;
@@ -249,7 +287,7 @@ button {
   width: 100%;
   color: black;
   margin: auto;
-  margin-top: 10rem;
+  margin-top: 7rem;
   margin-bottom: 3rem;
   padding: 0 10%;
 }
@@ -279,13 +317,8 @@ button {
 .text-center {
   text-align: center;
 }
-
-.text-primary {
-  color: var(--primary-color);
-}
-
-.text-dark {
-  color: var(--dark-color);
+.text-grey {
+  color: grey;
 }
 
 /* Padding */

@@ -2,10 +2,14 @@ import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../layout/Spinner";
-import { getGroupById } from "../../actions/group";
+import {
+  getGroupById,
+  addGroupById,
+  deleteGroupById,
+} from "../../actions/group";
 
 // get id from URL (match)
-const Group = ({ match }) => {
+const Group = ({ match, history }) => {
   const dispatch = useDispatch();
   const { group, loading } = useSelector((state) => state.group);
   const auth = useSelector((state) => state.auth);
@@ -19,28 +23,47 @@ const Group = ({ match }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <Link to="/groups" className="btn btn-light">
-            Back To Groups
-          </Link>
-          {auth.isAuthenticated &&
-            auth.loading === false &&
-            group.members.some((e) => e.user === auth.user._id) && (
-              <Fragment>
-                <Link to="/edit-group" className="btn btn-dark">
-                  Edit Group
-                </Link>
-                <Link to="/delete-group" className="btn btn-dark">
-                  Delete Group
-                </Link>
-              </Fragment>
-            )}
-          <Link to="/add-group" className="btn btn-dark">
-            Add Group
-          </Link>
-          <div className="group-grid">
-            <div>{group.name}</div>
-            <div>{group.description}</div>
+          <h1 className="large">{group.name}</h1>
+          <p className="lead">
+            <i className="fas fa-align-left"></i> {group.description}
+          </p>
+          <div className="dash-buttons">
+            <Link to="/groups" className="btn btn-light">
+              All Groups
+            </Link>
+            <Link to="/dashboard" className="btn btn-light">
+              My Groups
+            </Link>
           </div>
+
+          {auth.isAuthenticated &&
+          auth.loading === false &&
+          group.members.some((e) => e.user === auth.user._id) ? (
+            <div class="dash-buttons">
+              <Link to="/edit-group" className="btn btn-dark">
+                Edit Group
+              </Link>
+              <a
+                onClick={() =>
+                  dispatch(deleteGroupById(match.params.id, history))
+                }
+                href="#!"
+                className="btn btn-danger"
+              >
+                Delete Group
+              </a>
+            </div>
+          ) : (
+            <a
+              onClick={() => dispatch(addGroupById(match.params.id, history))}
+              href="#!"
+              className="btn btn-dark"
+            >
+              Add Group
+            </a>
+          )}
+
+          <hr />
         </Fragment>
       )}
     </Fragment>

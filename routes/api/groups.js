@@ -29,7 +29,7 @@ router.get("/me", auth, async (req, res) => {
 });
 
 // @route       POST api/groups/
-// @desc        Create or update group
+// @desc        Create group
 // @access      Private
 router.post(
   "/",
@@ -46,22 +46,52 @@ router.post(
     if (description) groupFields.description = description;
 
     try {
-      let group = await Group.findOne({ name });
-      if (group) {
-        // Update
-        group = await Group.findOneAndUpdate(
-          { name },
-          { $set: groupFields },
-          { new: true }
-        );
-        return res.json(group);
-      }
-
       // Create new group
       groupFields.members = [{ user: req.user.id }];
       group = new Group(groupFields);
       await group.save();
 
+      res.json(group);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
+
+// @route       PUT api/groups/:group_id
+// @desc        Edit group
+// @access      Private
+router.put(
+  "/:group_id",
+  [
+    auth,
+    checkObjectId("group_id"),
+    [check("name", "Name is required").not().isEmpty()],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const { name, description } = req.body;
+    const group_id = req.params.group_id;
+    // Build group object
+    const groupFields = {};
+    if (name) groupFields.name = name;
+    if (description) groupFields.description = description;
+
+    try {
+      let group = await Group.findOneAndUpdate(
+        { _id: group_id },
+        { $set: groupFields },
+        { new: true }
+      );
+      if (!group) {
+        return res
+          .status(400)
+          .json({ msg: "There is no group with the given id" });
+      }
       res.json(group);
     } catch (err) {
       console.error(err.message);
@@ -122,4 +152,20 @@ router.put(
   }
 );
 
+// @route       DELETE api/groups/:group_id/
+// @desc        delete the group with the given group id
+// @access      Private
+router.delete(
+  "/:group_id",
+  [auth, checkObjectId("group_id")],
+  async (req, res) => {
+    try {
+      await Group.findOneAndRemove({ _id: req.params.group_id });
+      res.json({ msg: "Group removed" });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
 module.exports = router;

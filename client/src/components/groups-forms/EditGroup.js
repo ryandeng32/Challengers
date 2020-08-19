@@ -1,13 +1,17 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { createGroup } from "../../actions/group";
-const CreateGroup = ({ history }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { editGroup } from "../../actions/group";
+
+import Spinner from "../layout/Spinner";
+
+const EditGroup = ({ history }) => {
   const dispatch = useDispatch();
+  const { group, loading } = useSelector((state) => state.group);
 
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
+    name: group.name,
+    description: group.description,
   });
 
   const { name, description } = formData;
@@ -19,11 +23,14 @@ const CreateGroup = ({ history }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(createGroup(formData, history));
+    dispatch(editGroup(formData, history, group._id));
   };
+  if (loading) {
+    return null;
+  }
   return (
     <Fragment>
-      <h1 className="large">Create New Group</h1>
+      <h1 className="large">Editing</h1>
       <p className="lead">
         <i className="fas fa-layer-group"></i> Let's create a group and start
         hosting challenges!
@@ -64,4 +71,4 @@ const CreateGroup = ({ history }) => {
   );
 };
 
-export default CreateGroup;
+export default EditGroup;

@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const DashboardActions = () => {
   return (
     <div className="dash-buttons">
-      <Link to="/edit-group" className="btn btn-light">
-        <i className="fas fa-layer-group text-primary"></i>Edit Group
+      <Link to="/create-group" className="btn btn-light">
+        <i className="fas fa-plus"></i> Create New Group
       </Link>
-      <Link to="/add-group" className="btn btn-light">
-        <i className="fas fa-layer-plus text-primary"></i>Add Group
+      <Link to="/groups" className="btn btn-light">
+        <i className="fas fa-layer-group"></i> Browse All Group
       </Link>
     </div>
   );

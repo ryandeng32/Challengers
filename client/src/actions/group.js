@@ -5,12 +5,16 @@ import {
   GET_GROUP,
   GET_ALL_GROUPS,
   GROUPS_ERROR,
-  CLEAR_GROUPS,
+  CLEAR_GROUP,
+  CREATE_GROUP,
+  ADD_GROUP,
+  DELETE_GROUP,
   UPDATE_GROUP,
 } from "./types";
 
 // Get current user's added groups
 export const getCurrentGroups = () => async (dispatch) => {
+  dispatch({ type: CLEAR_GROUP });
   try {
     const res = await axios.get("/api/groups/me");
     dispatch({ type: GET_GROUPS, payload: res.data });
@@ -24,7 +28,7 @@ export const getCurrentGroups = () => async (dispatch) => {
 
 // Get all groups
 export const getGroups = () => async (dispatch) => {
-  dispatch({ type: CLEAR_GROUPS });
+  dispatch({ type: CLEAR_GROUP });
   try {
     const res = await axios.get("/api/groups");
     dispatch({ type: GET_ALL_GROUPS, payload: res.data });
@@ -49,10 +53,41 @@ export const getGroupById = (groupId) => async (dispatch) => {
   }
 };
 
-// Create or update group
-export const createGroup = (formData, history, edit = false) => async (
-  dispatch
-) => {
+// Join group
+export const addGroupById = (groupId, history) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/groups/${groupId}/users`);
+    dispatch({ type: ADD_GROUP, payload: res.data });
+    history.push("/groups");
+    dispatch(setAlert("Group added", "success"));
+  } catch (err) {
+    dispatch({
+      type: GROUPS_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Delete group
+export const deleteGroupById = (groupId, history) => async (dispatch) => {
+  try {
+    const confirm = window.confirm("Do you really want to delete this group?");
+    if (confirm) {
+      await axios.delete(`/api/groups/${groupId}`);
+      dispatch({ type: DELETE_GROUP, payload: groupId });
+      dispatch(setAlert("Group removed", "danger"));
+      history.push("/groups");
+    }
+  } catch (err) {
+    dispatch({
+      type: GROUPS_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Create
+export const createGroup = (formData, history) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -61,14 +96,35 @@ export const createGroup = (formData, history, edit = false) => async (
     };
 
     const res = await axios.post("/api/groups", formData, config);
-    dispatch({ type: UPDATE_GROUP, payload: res.data });
-    dispatch(setAlert(edit ? "Group updated" : "Group created", "success"));
-    if (!edit) {
-      history.push("/dashboard");
-    }
+    dispatch({ type: CREATE_GROUP, payload: res.data });
+    dispatch(setAlert("Group created", "success"));
+    history.push("/dashboard");
   } catch (err) {
-    console.log("error!");
-    console.log(err);
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+    dispatch({
+      type: GROUPS_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Edit
+export const editGroup = (formData, history, groupId) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const res = await axios.put(`/api/groups/${groupId}`, formData, config);
+    dispatch({ type: UPDATE_GROUP, payload: res.data });
+    dispatch(setAlert("Edit Saved ", "success"));
+    history.push("/dashboard");
+  } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));

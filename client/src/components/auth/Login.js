@@ -30,7 +30,7 @@ const Login = () => {
     <Fragment>
       <h1 className="large">Sign In</h1>
       <p className="lead">
-        <i className="far fa-user"></i> Welcome Back
+        <i className="fas fa-user"></i> Welcome Back
       </p>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">

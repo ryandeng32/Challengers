@@ -9,9 +9,12 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 // groups
 export const GET_GROUP = "GET_GROUP";
-export const UPDATE_GROUP = "UPDATE_GROUP";
+export const CREATE_GROUP = "CREATE_GROUP";
 export const GET_GROUPS = "GET_GROUPS";
 export const GET_ALL_GROUPS = "GET_ALL_GROUPS";
 export const GROUPS_ERROR = "GROUPS_ERROR";
+export const CLEAR_GROUP = "CLEAR_GROUP";
 export const CLEAR_GROUPS = "CLEAR_GROUPS";
 export const DELETE_GROUP = "DELETE_GROUP";
+export const ADD_GROUP = "ADD_GROUP";
+export const UPDATE_GROUP = "UPDATE_GROUP";

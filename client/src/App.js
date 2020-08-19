@@ -16,6 +16,8 @@ import "./App.css";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 import CreateGroup from "./components/groups-forms/CreateGroup";
+import EditGroup from "./components/groups-forms/EditGroup";
+
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
@@ -50,6 +52,7 @@ const App = () => {
                 path="/create-group"
                 component={CreateGroup}
               />
+              <PrivateRoute exact path="/edit-group" component={EditGroup} />
             </Switch>
           </section>
         </Fragment>
