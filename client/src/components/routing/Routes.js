@@ -10,6 +10,7 @@ import Group from "../group/Group";
 import NotFound from "../layout/NotFound";
 import CreateGroup from "../groups-forms/CreateGroup";
 import EditGroup from "../groups-forms/EditGroup";
+import Challenge from "../challenge/Challenge";
 
 const Routes = () => {
   return (
@@ -24,6 +25,12 @@ const Routes = () => {
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/create-group" component={CreateGroup} />
         <PrivateRoute exact path="/edit-group" component={EditGroup} />
+        <PrivateRoute
+          exact
+          path="/groups/:group_id/challenges/:challenge_id"
+          component={Challenge}
+        />
+
         <Route component={NotFound} />
       </Switch>
     </section>

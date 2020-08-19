@@ -18,3 +18,7 @@ export const CLEAR_GROUPS = "CLEAR_GROUPS";
 export const DELETE_GROUP = "DELETE_GROUP";
 export const ADD_GROUP = "ADD_GROUP";
 export const UPDATE_GROUP = "UPDATE_GROUP";
+
+// challenges
+export const GET_CHALLENGES = "GET_CHALLENGES";
+export const CHALLENGE_ERROR = "CHALLENGE_ERROR";

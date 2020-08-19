@@ -7,6 +7,7 @@ import {
   addGroupById,
   deleteGroupById,
 } from "../../actions/group";
+import Challenges from "../challenges/Challenges";
 
 // get id from URL (match)
 const Group = ({ match, history }) => {
@@ -23,7 +24,7 @@ const Group = ({ match, history }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className="large">{group.name}</h1>
+          <h1 className="large">GROUP: {group.name}</h1>
           <p className="lead">
             <i className="fas fa-align-left"></i> {group.description}
           </p>
@@ -39,7 +40,7 @@ const Group = ({ match, history }) => {
           {auth.isAuthenticated &&
           auth.loading === false &&
           group.members.some((e) => e.user === auth.user._id) ? (
-            <div class="dash-buttons">
+            <div className="dash-buttons">
               <Link to="/edit-group" className="btn btn-dark">
                 Edit Group
               </Link>
@@ -62,8 +63,14 @@ const Group = ({ match, history }) => {
               Add Group
             </a>
           )}
-
           <hr />
+          {auth.isAuthenticated ? (
+            <Challenges groupId={match.params.id} />
+          ) : (
+            <div className="lead text-center text-grey">
+              You must be logged in to view challenges...
+            </div>
+          )}
         </Fragment>
       )}
     </Fragment>

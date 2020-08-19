@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editGroup } from "../../actions/group";
 
-import Spinner from "../layout/Spinner";
-
 const EditGroup = ({ history }) => {
   const dispatch = useDispatch();
   const { group, loading } = useSelector((state) => state.group);

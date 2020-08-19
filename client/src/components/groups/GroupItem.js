@@ -11,7 +11,6 @@ const GroupItem = (group) => {
   return (
     <div className="group bg-light">
       <div>
-        {console.log(auth)}
         {auth.user && members.some((el) => el.user === auth.user._id) && (
           <i className="fas fa-check-circle saved"></i>
         )}
