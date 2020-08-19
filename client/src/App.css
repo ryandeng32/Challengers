@@ -8,11 +8,7 @@
   --success-color: #28a745;
   --light-blue: #3fc1c9;
 }
-html {
-  height: 100vh;
-  background-color: #e4e9fd;
-  background-image: -webkit-linear-gradient(-65deg, #ffffff 85%, #e7e7e7 30%);
-}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -134,7 +130,6 @@ img {
 }
 /********************************************************************/
 /* Forms */
-
 .form .form-group {
   margin: 1.2rem 0;
 }
@@ -162,14 +157,42 @@ img {
   font-size: 1.2rem;
   border: 1px solid #ccc;
 }
-
 .form input[type="submit"],
 button {
   font: inherit;
 }
-
 /********************************************************************/
-/*Utilities                                   
+/* Groups */
+.groups {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.group {
+  border: 2px solid #e7e7e7;
+  text-align: center;
+  border-radius: 4px;
+  position: relative;
+  padding: 3rem 0.5rem;
+}
+.group .btn {
+  position: relative;
+  background-color: var(--light-blue);
+  opacity: 0.7;
+  top: 50px;
+}
+
+/* @TODO: Make compatible for smaller screens */
+@media screen and (max-width: 900px) {
+  .groups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+}
+/********************************************************************/
+/*Utilitie */
 /********************************************************************/
 
 /* Alerts */
@@ -228,7 +251,7 @@ button {
   margin: auto;
   margin-top: 10rem;
   margin-bottom: 3rem;
-  padding: 0 25%;
+  padding: 0 10%;
 }
 
 /* Text Styles*/

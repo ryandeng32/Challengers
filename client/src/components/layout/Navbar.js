@@ -23,7 +23,7 @@ export const Navbar = ({ navColor }) => {
           onClick={() => {
             dispatch(logout());
           }}
-          href="#"
+          href="#!"
         >
           <i className="fas fa-sign-out-alt"></i> Logout
         </a>

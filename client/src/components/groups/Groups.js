@@ -20,7 +20,7 @@ const Groups = () => {
         <Fragment>
           <h1 className="large text-primary">Groups</h1>
           <p className="lead">
-            <i className="fab fa-connectdevelop"></i> Browse and add new groups!
+            <i className="fas fa-eye"></i> Browse and add new groups!
           </p>
           <div className="groups">
             {all_groups.length > 0 ? (

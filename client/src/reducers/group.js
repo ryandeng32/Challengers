@@ -4,6 +4,7 @@ import {
   GET_ALL_GROUPS,
   GROUPS_ERROR,
   CLEAR_GROUPS,
+  UPDATE_GROUP,
 } from "../actions/types";
 
 const initialState = {
@@ -33,6 +34,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         all_groups: payload,
+        loading: false,
+      };
+    case UPDATE_GROUP:
+      return {
+        ...state,
+        groups: state.groups.concat(payload),
         loading: false,
       };
     case GROUPS_ERROR:

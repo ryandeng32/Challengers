@@ -6,6 +6,7 @@ import {
   GET_ALL_GROUPS,
   GROUPS_ERROR,
   CLEAR_GROUPS,
+  UPDATE_GROUP,
 } from "./types";
 
 // Get current user's added groups
@@ -60,7 +61,7 @@ export const createGroup = (formData, history, edit = false) => async (
     };
 
     const res = await axios.post("/api/groups", formData, config);
-    dispatch({ type: GET_GROUPS, payload: res.data });
+    dispatch({ type: UPDATE_GROUP, payload: res.data });
     dispatch(setAlert(edit ? "Group updated" : "Group created", "success"));
     if (!edit) {
       history.push("/dashboard");

@@ -5,7 +5,6 @@ import Spinner from "../layout/Spinner";
 import DashboardActions from "./DashboardActions";
 import { getCurrentGroups } from "../../actions/group";
 import GroupItem from "../groups/GroupItem";
-import group from "../../reducers/group";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -34,11 +33,11 @@ const Dashboard = () => {
       ) : (
         <Fragment>
           <p>You have not yet join any group, please join a group first</p>
-          <Link to="/create-group" className="btn btn-primary my-1">
-            Create Group
-          </Link>
         </Fragment>
       )}
+      <Link to="/create-group" className="btn btn-primary my-1">
+        Create Group
+      </Link>
     </Fragment>
   );
 };

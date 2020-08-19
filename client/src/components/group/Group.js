@@ -25,11 +25,19 @@ const Group = ({ match }) => {
           {auth.isAuthenticated &&
             auth.loading === false &&
             group.members.some((e) => e.user === auth.user._id) && (
-              <Link to="/edit-group" className="btn btn-dark">
-                Edit Group
-              </Link>
+              <Fragment>
+                <Link to="/edit-group" className="btn btn-dark">
+                  Edit Group
+                </Link>
+                <Link to="/delete-group" className="btn btn-dark">
+                  Delete Group
+                </Link>
+              </Fragment>
             )}
-          <div class="group-grid">
+          <Link to="/add-group" className="btn btn-dark">
+            Add Group
+          </Link>
+          <div className="group-grid">
             <div>{group.name}</div>
             <div>{group.description}</div>
           </div>
