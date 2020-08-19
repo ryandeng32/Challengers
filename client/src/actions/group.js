@@ -10,6 +10,7 @@ import {
   ADD_GROUP,
   DELETE_GROUP,
   UPDATE_GROUP,
+  CLEAR_CHALLENGES,
 } from "./types";
 
 // Get current user's added groups
@@ -18,6 +19,7 @@ export const getCurrentGroups = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/groups/me");
     dispatch({ type: GET_GROUPS, payload: res.data });
+    dispatch({ type: CLEAR_CHALLENGES });
   } catch (err) {
     dispatch({
       type: GROUPS_ERROR,

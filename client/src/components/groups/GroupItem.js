@@ -16,6 +16,11 @@ const GroupItem = (group) => {
         )}
         <h2>{name}</h2>
         <p>{description}</p>
+        <p className="user-count-div">
+          <i className="fas fa-users user-count"></i>
+          {members.length}
+        </p>
+
         <Link to={`/groups/${_id}`} className="btn btn-primary">
           View Group
         </Link>

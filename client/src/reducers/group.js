@@ -63,7 +63,6 @@ export default (state = initialState, action) => {
     case CLEAR_GROUPS:
       return {
         ...state,
-        group: null,
         groups: [],
         error: null,
       };

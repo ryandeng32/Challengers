@@ -10,10 +10,6 @@ const ChallengeItem = ({ groupId, challenge }) => {
   return (
     <div className="challenge bg-light">
       <div>
-        {auth.user &&
-          challenge.members.some((el) => el.user === auth.user._id) && (
-            <i className="fas fa-check-circle saved"></i>
-          )}
         <h2>{challenge.name}</h2>
         <p>{challenge.description}</p>
         <Link

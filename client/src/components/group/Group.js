@@ -33,7 +33,7 @@ const Group = ({ match, history }) => {
               All Groups
             </Link>
             <Link to="/dashboard" className="btn btn-light">
-              My Groups
+              Dashboard
             </Link>
           </div>
 

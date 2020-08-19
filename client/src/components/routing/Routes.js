@@ -11,6 +11,8 @@ import NotFound from "../layout/NotFound";
 import CreateGroup from "../groups-forms/CreateGroup";
 import EditGroup from "../groups-forms/EditGroup";
 import Challenge from "../challenge/Challenge";
+import CreateChallenge from "../challenges-forms/CreateChallenge";
+import EditChallenge from "../challenges-forms/EditChallenge";
 
 const Routes = () => {
   return (
@@ -30,6 +32,12 @@ const Routes = () => {
           path="/groups/:group_id/challenges/:challenge_id"
           component={Challenge}
         />
+        <PrivateRoute
+          exact
+          path="/create-challenge"
+          component={CreateChallenge}
+        />
+        <PrivateRoute exact path="/edit-challenge" component={EditChallenge} />
 
         <Route component={NotFound} />
       </Switch>

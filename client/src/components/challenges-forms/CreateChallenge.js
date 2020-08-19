@@ -1,15 +1,14 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { editGroup } from "../../actions/group";
+import { createChallenge } from "../../actions/challenge";
 
-const EditGroup = ({ history }) => {
+const CreateChallenge = ({ history }) => {
   const dispatch = useDispatch();
-  const { group, loading } = useSelector((state) => state.group);
-
+  const { _id: groupId } = useSelector((state) => state.group.group);
   const [formData, setFormData] = useState({
-    name: group.name,
-    description: group.description,
+    name: "",
+    description: "",
   });
 
   const { name, description } = formData;
@@ -21,16 +20,14 @@ const EditGroup = ({ history }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(editGroup(formData, history, group._id));
+    dispatch(createChallenge(formData, groupId, history));
   };
-  if (loading) {
-    return null;
-  }
   return (
     <Fragment>
-      <h1 className="large">Editing</h1>
+      <h1 className="large">Create New Challenge</h1>
       <p className="lead">
-        <i className="fas fa-layer-group"></i> Edit your group
+        <i className="fas fa-layer-group"></i> Let's create a challenge and
+        start get submissions!
       </p>
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <small className="form-text">field with * is required</small>
@@ -43,7 +40,7 @@ const EditGroup = ({ history }) => {
             onChange={(e) => onChange(e)}
             autoComplete="off"
           />
-          <small className="form-text">Name of the group</small>
+          <small className="form-text">Name of the challenge</small>
         </div>
         <div className="form-group">
           <input
@@ -54,14 +51,10 @@ const EditGroup = ({ history }) => {
             onChange={(e) => onChange(e)}
             autoComplete="off"
           />
-          <small className="form-text">Description of the group</small>
+          <small className="form-text">Description of the challenge</small>
 
           <div className="dash-buttons my-1">
-            <input
-              type="submit"
-              className="btn btn-lightblue"
-              value="Confirm"
-            />
+            <input type="submit" className="btn btn-lightblue" value="Submit" />
             <Link className="btn btn-light" to="/dashboard">
               Go Back
             </Link>
@@ -72,4 +65,4 @@ const EditGroup = ({ history }) => {
   );
 };
 
-export default EditGroup;
+export default CreateChallenge;

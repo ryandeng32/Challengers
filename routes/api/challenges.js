@@ -95,4 +95,43 @@ router.delete(
     }
   }
 );
+
+// @route       PUT api/group/:group_id/challenges/:challenge_id
+// @desc        Edit challenge by challenge_id
+// @access      Private
+router.put(
+  "/:challenge_id",
+  [
+    auth,
+    checkObjectId("challenge_id"),
+    [check("name", "Name is required").not().isEmpty()],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const { name, description } = req.body;
+    const challenge_id = req.params.challenge_id;
+    const challengeFields = {};
+    if (name) challengeFields.name = name;
+    if (description) challengeFields.description = description;
+    try {
+      let challenge = await Challenge.findOneAndUpdate(
+        { _id: challenge_id },
+        { $set: challengeFields },
+        { new: true }
+      );
+      if (!challenge) {
+        return res
+          .status(400)
+          .json({ msg: "There is no challenge with the given id" });
+      }
+      res.json(challenge);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
 module.exports = router;
