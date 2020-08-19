@@ -34,6 +34,7 @@ export const getGroups = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/groups");
     dispatch({ type: GET_ALL_GROUPS, payload: res.data });
+    dispatch({ type: CLEAR_CHALLENGES });
   } catch (err) {
     dispatch({
       type: GROUPS_ERROR,

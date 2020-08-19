@@ -14,7 +14,7 @@ const ChallengeItem = ({ groupId, challenge }) => {
         <p>{challenge.description}</p>
         <Link
           to={`/groups/${groupId}/challenges/${challenge._id}`}
-          className="btn btn-primary"
+          className="btn"
         >
           View Challenge
         </Link>
