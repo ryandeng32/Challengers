@@ -22,33 +22,6 @@ const ChallengeSchema = new Schema({
       },
     },
   ],
-  likes: [
-    {
-      user: {
-        type: Schema.Types.ObjectId,
-        ref: "user",
-      },
-    },
-  ],
-  submissions: [
-    {
-      user: {
-        type: Schema.Types.ObjectId,
-        ref: "user",
-      },
-      text: {
-        type: String,
-        required: true,
-      },
-      name: {
-        type: String,
-      },
-      date: {
-        type: Date,
-        default: Date.now,
-      },
-    },
-  ],
   date: {
     type: Date,
     default: Date.now,

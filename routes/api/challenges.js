@@ -78,4 +78,21 @@ router.get(
     }
   }
 );
+
+// @route       DELETE api/group/:group_id/challenges/:challenge_id
+// @desc        Delete challenge by challenge_id
+// @access      Private
+router.delete(
+  "/:challenge_id",
+  [auth, checkObjectId("challenge_id")],
+  async (req, res) => {
+    try {
+      await Challenge.findOneAndRemove({ _id: req.params.challenge_id });
+      res.json({ msg: "Challenge removed" });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  }
+);
 module.exports = router;
