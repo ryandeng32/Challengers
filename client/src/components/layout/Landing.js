@@ -25,6 +25,7 @@ const Landing = () => {
           <ul>
             <li>Landing Page</li>
             <li>User Authentication with JWT</li>
+            <li>A bunch of features about "Groups"</li>
           </ul>
         </div>
 
