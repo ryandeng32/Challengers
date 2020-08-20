@@ -16,41 +16,35 @@ const Submission = ({ match }) => {
     dispatch(getSub(group_id, challenge_id, sub_id));
   }, []);
 
-  if (sub.loading || !sub.sub) {
+  if (auth.loading || sub.loading || !sub.sub) {
     return <Spinner />;
   }
   const { title, name, detail, user, likes, comments, date } = sub.sub;
 
   return (
     <Fragment>
-      <Link
-        to={`/groups/${group_id}/challenges/${challenge_id}`}
-        className="btn btn-rounded"
-      >
-        Back
-      </Link>
-      <div className="submissions">
-        <div className="submission">
-          <h2>{title}</h2>
-          <p>{detail}</p>
-          <p>By {name}</p>
-          <p className="sub-date">
-            Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
-          </p>
+      <div className="submission">
+        <h2>{title}</h2>
+        <p>{detail}</p>
+        <p>By {name}</p>
+        <p className="sub-date">
+          Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
+        </p>
+        <div className="dash-buttons">
           <button
             onClick={(e) =>
               dispatch(updateLike(group_id, challenge_id, sub_id))
             }
             type="button"
-            className="btn btn-light"
+            className="btn like-btn"
           >
-            {likes.length > 0 ? (
-              <i className="fas fa-thumbs-up blue-like"> {likes.length} </i>
+            {likes.some((el) => el.user.toString() === auth.user._id) ? (
+              <i className="fas fa-thumbs-up blue-like"> </i>
             ) : (
               <i className="fas fa-thumbs-up" />
             )}
+            {likes.length}
           </button>
-
           {!auth.loading && user === auth.user._id && (
             <a
               href="#!"
@@ -63,7 +57,14 @@ const Submission = ({ match }) => {
             </a>
           )}
         </div>
+        <Link
+          to={`/groups/${group_id}/challenges/${challenge_id}`}
+          className="btn btn-rounded btn-light"
+        >
+          Back
+        </Link>
       </div>
+
       <CommentForm
         group_id={group_id}
         challenge_id={challenge_id}

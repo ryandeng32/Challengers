@@ -60,7 +60,10 @@ const EditChallenge = ({ history }) => {
               className="btn btn-lightblue"
               value="Confirm"
             />
-            <Link className="btn btn-light" to={`/group/${group._id}`}>
+            <Link
+              className="btn btn-light"
+              to={`/groups/${group._id}/challenges/${challenge._id}`}
+            >
               Go Back
             </Link>
           </div>

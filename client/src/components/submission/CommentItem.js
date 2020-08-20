@@ -8,7 +8,7 @@ const CommentItem = ({ comment, group_id, challenge_id, sub_id }) => {
   const auth = useSelector((state) => state.auth);
   const { _id: comment_id, text, user, date, name } = comment;
   return (
-    <div>
+    <div className="comment">
       <h2>{name}</h2>
       <p>{text}</p>
       <p>

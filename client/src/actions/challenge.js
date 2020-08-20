@@ -120,7 +120,7 @@ export const editChallenge = (
     );
     dispatch({ type: UPDATE_CHALLENGE, payload: res.data });
     dispatch(setAlert("Edit Saved ", "success"));
-    history.push(`/groups/${group_id}`);
+    history.push(`/groups/${group_id}/challenges/${challenge_id}`);
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
