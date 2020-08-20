@@ -16,6 +16,8 @@ import EditChallenge from "../challenges-forms/EditChallenge";
 
 import Submissions from "../submissions/Submissions";
 import UploadSubmission from "../SubmissionForm/UploadSubmission";
+import Submission from "../submission/Submission";
+
 const Routes = () => {
   return (
     <section className="container">
@@ -47,7 +49,11 @@ const Routes = () => {
           path="/upload-submission"
           component={UploadSubmission}
         />
-
+        <PrivateRoute
+          exact
+          path="/groups/:group_id/challenges/:challenge_id/submissions/:sub_id"
+          component={Submission}
+        />
         <Route component={NotFound} />
       </Switch>
     </section>

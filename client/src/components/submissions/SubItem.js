@@ -29,7 +29,10 @@ const SubItem = ({
           <i className="fas fa-thumbs-up" />
         )}
       </button>
-      <Link to={`/submission/${sub_id}`} className="btn">
+      <Link
+        to={`/groups/${group_id}/challenges/${challenge_id}/submissions/${sub_id}`}
+        className="btn"
+      >
         Discussion
         {comments.length > 0 && (
           <span class="comment-count">{comments.length}</span>

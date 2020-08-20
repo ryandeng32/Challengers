@@ -35,3 +35,6 @@ export const SUB_ERROR = "SUB_ERROR";
 export const UPDATE_LIKES = "UPDATE_LIKES";
 export const DELETE_SUB = "DELETE_SUB";
 export const ADD_SUB = "ADD_SUB";
+export const GET_SUB = "GET_SUB";
+export const ADD_COMMENT = "ADD_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
