@@ -9,16 +9,14 @@ const ChallengeItem = ({ groupId, challenge }) => {
   }
   return (
     <div className="challenge bg-light">
-      <div>
-        <h2>{challenge.name}</h2>
-        <p>{challenge.description}</p>
-        <Link
-          to={`/groups/${groupId}/challenges/${challenge._id}`}
-          className="btn"
-        >
-          View Challenge
-        </Link>
-      </div>
+      <h2>{challenge.name}</h2>
+      <p>{challenge.description}</p>
+      <Link
+        to={`/groups/${groupId}/challenges/${challenge._id}`}
+        className="btn"
+      >
+        View Challenge
+      </Link>
     </div>
   );
 };

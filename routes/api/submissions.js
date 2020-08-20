@@ -4,9 +4,7 @@ const router = express.Router({ mergeParams: true });
 const auth = require("../../middleware/auth");
 const checkObjectId = require("../../middleware/checkObjectId");
 
-const Challenge = require("../../models/Challenge");
 const User = require("../../models/User");
-const Group = require("../../models/Group");
 const Submission = require("../../models/Submission");
 // @route       POST /submissions/
 // @desc        Create submission
@@ -26,9 +24,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     try {
-      const user = await (await User.findById(req.user.id)).isSelected(
-        "-password"
-      );
+      const user = await User.findById(req.user.id).select("-password");
       const newSubmission = new Submission({
         title: req.body.title,
         name: user.name,

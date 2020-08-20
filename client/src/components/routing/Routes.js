@@ -13,7 +13,9 @@ import EditGroup from "../groups-forms/EditGroup";
 import Challenge from "../challenge/Challenge";
 import CreateChallenge from "../challenges-forms/CreateChallenge";
 import EditChallenge from "../challenges-forms/EditChallenge";
-import UploadSubmission from "../submissions/UploadSubmission";
+
+import Submissions from "../submissions/Submissions";
+import UploadSubmission from "../SubmissionForm/UploadSubmission";
 const Routes = () => {
   return (
     <section className="container">
@@ -38,6 +40,8 @@ const Routes = () => {
           component={CreateChallenge}
         />
         <PrivateRoute exact path="/edit-challenge" component={EditChallenge} />
+        <PrivateRoute exact path="/submissions" component={Submissions} />
+
         <PrivateRoute
           exact
           path="/upload-submission"

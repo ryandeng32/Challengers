@@ -28,3 +28,10 @@ export const CLEAR_CHALLENGES = "CLEAR_CHALLANGES";
 export const CLEAR_CHALLENGE = "CLEAR_CHALLENGE";
 export const DELETE_CHALLENGE = "DELETE_CHALLENGE";
 export const UPDATE_CHALLENGE = "UPDATE_CHALLENGE";
+
+// submissions
+export const GET_SUBS = "GET_SUBS";
+export const SUB_ERROR = "SUB_ERROR";
+export const UPDATE_LIKES = "UPDATE_LIKES";
+export const DELETE_SUB = "DELETE_SUB";
+export const ADD_SUB = "ADD_SUB";

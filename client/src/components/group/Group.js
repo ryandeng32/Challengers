@@ -68,7 +68,7 @@ const Group = ({ match, history }) => {
             <Challenges groupId={match.params.id} />
           ) : (
             <div className="lead text-center text-grey">
-              You must be logged in to view challenges...
+              You must be logged in to view more...
             </div>
           )}
         </Fragment>

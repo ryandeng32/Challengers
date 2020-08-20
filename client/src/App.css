@@ -246,6 +246,26 @@ button {
 }
 
 /********************************************************************/
+/* Challenges */
+.submissions {
+  display: flex;
+  flex-direction: column;
+}
+
+.submission {
+  border: 1px solid #e7e7e7;
+  border-radius: 20px;
+  box-shadow: inset 0 0 10px #000000;
+  text-align: center;
+  position: relative;
+  padding: 3rem 0.5rem;
+  margin-bottom: 2rem;
+}
+.blue-like {
+  opacity: 0.9;
+  color: #3b5998;
+}
+/********************************************************************/
 /*Dashboard */
 .dash-buttons {
   display: flex;
@@ -328,6 +348,7 @@ hr {
 .btn-danger {
   background: var(--danger-color);
 }
+
 input {
   transition: 0.2s ease-in;
 }

@@ -1,5 +1,10 @@
 import React, { Fragment, useState } from "react";
-const UploadSubmission = () => {
+import { withRouter } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addSub } from "../../actions/submission";
+const UploadSubmission = ({ group_id, challenge_id }) => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     selectedFile: null,
     title: "",
@@ -12,10 +17,14 @@ const UploadSubmission = () => {
       [e.target.name]: e.target.value,
     });
   };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addSub(group_id, challenge_id, formData));
+  };
   return (
     <Fragment>
       <div className="large text-center">Upload Submission</div>
-      <form className="form">
+      <form className="form" onSubmit={onSubmit}>
         {/* Image Upload */}
 
         <div className="form-group">
@@ -46,4 +55,4 @@ const UploadSubmission = () => {
   );
 };
 
-export default UploadSubmission;
+export default withRouter(UploadSubmission);

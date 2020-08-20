@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { getChallenge, deleteChallenge } from "../../actions/challenge";
-// get id from URL (match)
+import Submissions from "../submissions/Submissions";
+import UploadSubmission from "../SubmissionForm/UploadSubmission";
+
 const Challenge = ({ match, history }) => {
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
   const { group_id, challenge_id } = match.params;
   const { challenge, loading } = useSelector((state) => state.challenge);
   useEffect(() => {
@@ -42,11 +45,14 @@ const Challenge = ({ match, history }) => {
         >
           Delete Challenge
         </a>
-        <Link to="/upload-submission" className="btn btn-lightblue">
-          <i className="fas fa-upload"></i> Upload Submission
-        </Link>
       </div>
       <hr />
+      {auth.isAuthenticated && (
+        <Fragment>
+          <Submissions group_id={group_id} challenge_id={challenge_id} />
+          <UploadSubmission group_id={group_id} challenge_id={challenge_id} />
+        </Fragment>
+      )}
     </Fragment>
   );
 };
