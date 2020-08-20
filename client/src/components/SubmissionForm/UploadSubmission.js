@@ -6,7 +6,6 @@ const UploadSubmission = ({ group_id, challenge_id }) => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    selectedFile: null,
     title: "",
     detail: "",
   });
@@ -20,10 +19,13 @@ const UploadSubmission = ({ group_id, challenge_id }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(addSub(group_id, challenge_id, formData));
+    setFormData({ title: "", detail: "" });
   };
   return (
     <Fragment>
-      <div className="large text-center">Upload Submission</div>
+      <p className="lead text-grey">
+        <i className="fas fa-upload"></i> Upload Submission
+      </p>
       <form className="form" onSubmit={onSubmit}>
         {/* Image Upload */}
 

@@ -16,9 +16,8 @@ const Submissions = ({ group_id, challenge_id }) => {
   }
   return (
     <Fragment>
-      <h1 className="large">Submissions</h1>
-      <p className="lead">
-        <i className="fas fa-eyes"></i> View and upload submissions
+      <p className="lead text-grey">
+        <i className="fas fa-eye"></i> View Submissions
       </p>
       <div className="submissions">
         {subs.length > 0 ? (

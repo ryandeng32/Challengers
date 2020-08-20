@@ -141,6 +141,10 @@ export const addComment = (group_id, challenge_id, sub_id, formData) => async (
     window.scrollTo(0, 0);
     dispatch(setAlert("Comment Created", "success"));
   } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
     dispatch({
       type: SUB_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },

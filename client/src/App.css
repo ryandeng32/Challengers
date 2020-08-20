@@ -34,7 +34,9 @@ p {
 img {
   width: 100%;
 }
-
+i {
+  margin-right: 5px;
+}
 /********************************************************************/
 /* Navbar */
 .navbar {
@@ -248,22 +250,74 @@ button {
 /********************************************************************/
 /* Challenges */
 .submissions {
-  display: flex;
-  flex-direction: column;
+  box-shadow: inset 0 0 10px #000000;
+  background: rgba(230, 229, 229, 0.575);
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 268px));
+  grid-gap: 2rem;
+  grid-template-rows: repeat(auto-fill, minmax(100px, auto));
+  grid-row-gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .submission {
-  border: 1px solid #e7e7e7;
-  border-radius: 20px;
-  box-shadow: inset 0 0 10px #000000;
+  opacity: 0.8;
+  background: white;
+  border: 1px dotted #6d6d6d85;
+  width: 100%;
   text-align: center;
   position: relative;
   padding: 3rem 0.5rem;
+  padding-bottom: 1rem;
   margin-bottom: 2rem;
+}
+.submissions .name {
+  position: absolute;
+  top: 0;
+  right: 3%;
+  font-weight: 700;
+}
+.submissions .sub-date {
+  position: absolute;
+  top: 0;
+  left: 5%;
+}
+.sub-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sub-content h3 {
+  margin-left: 1%;
+  margin-bottom: 1rem;
+}
+
+.sub-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.action-1 {
+  display: flex;
+  justify-content: space-around;
 }
 .blue-like {
   opacity: 0.9;
   color: #3b5998;
+}
+
+.sub-hr {
+  margin-top: 15%;
+  margin-bottom: 0;
+}
+
+.submissions h4 {
+  position: absolute;
+  margin: 2% 30%;
 }
 /********************************************************************/
 /*Dashboard */
@@ -347,6 +401,38 @@ hr {
 }
 .btn-danger {
   background: var(--danger-color);
+}
+.like-btn {
+  background: white;
+  color: grey;
+  padding: 0;
+  width: 20%;
+}
+.like-btn:hover {
+  opacity: 0.9;
+}
+.discussion {
+  position: relative;
+  background-color: rgba(175, 175, 175, 0.055);
+  width: 5%;
+  padding: 1rem 5rem;
+}
+.discussion p {
+  font-weight: 400;
+  opacity: 0.7;
+  position: absolute;
+  color: black;
+  top: 0;
+  left: 20%;
+}
+.delete-sub {
+  width: 78%;
+  opacity: 0.5;
+}
+.comment-count {
+  color: black;
+  margin-left: 10%;
+  font-weight: 700;
 }
 
 input {
