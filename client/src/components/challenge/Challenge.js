@@ -42,6 +42,9 @@ const Challenge = ({ match, history }) => {
         >
           Delete Challenge
         </a>
+        <Link to="/upload-submission" className="btn btn-lightblue">
+          <i className="fas fa-upload"></i> Upload Submission
+        </Link>
       </div>
       <hr />
     </Fragment>

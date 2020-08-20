@@ -13,7 +13,6 @@ app.use(express.json());
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/groups", require("./routes/api/groups"));
-// app.use("/api/groups/:group_id/challenges", require("./routes/api/Challenges"));
 
 // Server static assets in production
 if (process.env.NODE_ENV === "production") {

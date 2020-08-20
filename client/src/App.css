@@ -148,7 +148,13 @@ img {
 .form input[type="email"],
 .form input[type="password"],
 .form input[type="date"],
-.form select,
+.form select {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
 .form textarea {
   display: block;
   width: 100%;
@@ -326,6 +332,13 @@ input {
   transition: 0.2s ease-in;
 }
 input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #719ece;
+}
+textarea {
+  transition: 0.2s ease-in;
+}
+textarea:focus {
   outline: none;
   box-shadow: 0 0 10px #719ece;
 }

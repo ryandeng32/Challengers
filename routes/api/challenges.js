@@ -134,4 +134,7 @@ router.put(
     }
   }
 );
+
+router.use("/:challenge_id/submissions", require("./submissions"));
+
 module.exports = router;
