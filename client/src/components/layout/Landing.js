@@ -18,11 +18,7 @@ const Landing = () => {
       <div className="landing-info">
         <div className="landing-inner">
           <h1 className="title">Demo Page</h1>
-          <p>Welcome to the demo of "Challengers"</p>
-          <ul>
-            <li>In Development</li>
-            <li>Sign up and try it out!</li>
-          </ul>
+          <p>Sign up and try!"</p>
         </div>
 
         <div>
