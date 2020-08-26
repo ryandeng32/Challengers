@@ -18,15 +18,10 @@ const Landing = () => {
       <div className="landing-info">
         <div className="landing-inner">
           <h1 className="title">Demo Page</h1>
-          <p>
-            Welcome to our team's demo page. This page now has the following
-            features
-          </p>
+          <p>Welcome to the demo of "Challengers"</p>
           <ul>
-            <li>Landing Page</li>
-            <li>404-Not-Found Page</li>
-            <li>User Authentication with JWT</li>
-            <li>Features about "Groups"</li>
+            <li>In Development</li>
+            <li>Sign up and try it out!</li>
           </ul>
         </div>
 

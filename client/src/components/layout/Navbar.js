@@ -54,7 +54,7 @@ export const Navbar = ({ navColor }) => {
     <nav className={`navbar ${navColor}`}>
       <h1>
         <Link to="/">
-          <i className="fas fa-palette"></i> Team Creativity
+          <i className="fas fa-palette"></i> Challengers
         </Link>
       </h1>
       {!loading && (
