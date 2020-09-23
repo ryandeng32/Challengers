@@ -10,7 +10,7 @@
 ### Technologies
 * MongoDB, Express, React, Node **MERN stack** for frontend and backend 
 * **Redux** for state management 
-* **JWT**, **Bcrypt**, for user authorization and authentication 
+* **JWT**, **Bcrypt**, for user authorization and user authentication 
 
 ### Demo 
 
